@@ -1,0 +1,75 @@
+﻿@model WebApplication3.Models.Product
+@{
+    ViewBag.Title = "addproduct";
+}
+<div class="container">
+<div class="row">
+<div class="col-sm-12 col-md-10 col-md-offset-3">
+<h2>Add Medical</h2>
+
+<form  method="post" class="form-horizontal">
+<div class="form-group">
+<label for="" class="control-label col-xs-2">Produt Name</label>
+<div class="col-xs-10">
+ @Html.TextBoxFor(x=>x.ProductName,new {@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ProductName,null,new { @style="color:red;"})
+ </div>
+    
+ </div>
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Sales Price</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(x => x.SalesPrice, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.SalesPrice, null, new { @style = "color:red;" })
+        </div>
+        </div>
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Cost Price</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Price, null, new { @style = "color:red;" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Mfg Date</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(x => x.MfgDate, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.MfgDate, null, new { @style = "color:red;" })
+        </div>
+    </div>
+        <div class="form-group">
+            <label for="" class="control-label col-xs-2">Expiry Date</label>
+            <div class="col-xs-10">
+                @Html.TextBoxFor(x => x.ExpireDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ExpireDate, null, new { @style = "color:red;" })
+            </div>
+        </div>
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Stock</label>
+        <div class="col-xs-10">
+            @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Stock, null, new { @style = "color:red;" })
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-xs-8">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+</form>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready( function() {
+      $("#ExpireDate").datepicker();
+  });
+  
+  $(function () {
+      $("#MfgDate").datepicker();
+  });
+</script>

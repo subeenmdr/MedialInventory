@@ -1,0 +1,20 @@
+﻿@model WebApplication3.Models.salesmodel.DTO
+    <div class="container">
+
+
+    </div>
+<table>
+@foreach (var item in Model.ListOfSales)
+{
+    <tr>
+        <td>@item.SaleId </td>
+        <td>@item.ProductName</td>
+        <td>@item.Quantity</td>
+        <td>@item.Price</td>
+        <td>@item.Total</td>
+
+
+
+    </tr>
+}
+        </table>

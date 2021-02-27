@@ -1,0 +1,45 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<WebApplication3.Models.Sale>
+
+
+
+
+
+
+   
+<div class="container">
+    <table id="mytable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Product Name</th>
+                <th>Quantaty</th>
+                <th>Price</th>
+                <th>TotalPrice</th>
+               
+                
+                <th>Action</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SaleId </td>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+                <td>@item.Total</td>
+                
+         
+                <td>
+                    
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SaleId })
+                </td>
+
+            </tr>
+        }
+        </table>
+</div>

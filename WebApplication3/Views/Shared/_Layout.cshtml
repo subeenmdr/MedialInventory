@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
+
+</head>
+<body>
+
+
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Medi Store</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Product
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li>@Html.ActionLink("Product List", "ProductList", "product")</li>
+                            <li>@Html.ActionLink("Add product", "addproduct", "product")</li>
+                            @*<li><a href="#">Add Product</a></li>
+                                <li><a href="#">Product list</a></li>*@
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Sales
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add sales", "sales", "sales")</li>
+                            <li>@Html.ActionLink("Sales List", "saleslist", "sales")</li>
+
+
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+
+
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+
+
+
+            }
+        </nav>
+    }
+    else
+    {
+            <ul class="nav navbar-nav navbar-left">
+                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+            }
+      
+    @RenderBody()
+    <hr />
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<footer>
+    <p>&copy; @DateTime.Now.Year - Medical Inventory</p>
+</footer>
